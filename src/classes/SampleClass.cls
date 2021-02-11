@@ -10,7 +10,7 @@ public class SampleClass {
     //Instance Variable
     public String instanceMessage = 'Instance variable';
     
-    //Static methodD:\Ant Migration Tool\Admin-Dev Org\src\classes\SampleClass.cls
+    //Static method
     public static void printStaticData(){
         System.debug('staticMessage:'+staticMessage);
         System.debug('PI_VALUE:'+PI_VALUE);

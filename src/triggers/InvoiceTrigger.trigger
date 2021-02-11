@@ -18,9 +18,9 @@ trigger InvoiceTrigger on Invoice__c (before insert, before update, before delet
                 }
             }
         }else if(Trigger.isUpdate){
-            if(InvoiceTriggerClass.runOnceBefore() == false){
-                 return;
-            }
+            // if(InvoiceTriggerClass.runOnceBefore() == false){
+            //      return;
+            // }
             System.debug('Trigger --> Before Update');
             System.debug('old:'+Trigger.old);
             System.debug('oldMap:'+Trigger.oldMap);
@@ -34,6 +34,8 @@ trigger InvoiceTrigger on Invoice__c (before insert, before update, before delet
                 invalidInvoiceIdSet.add(invl.Invoice_Master__c);
             }
             for(Invoice__c invoice : Trigger.new){
+                // invoice.Street__c ='test Street';
+                // invoice.Status__c = 'test';
                 //invoice.Status__c = 'Processed';//You can do this, because Trigger.new is editable in the Before event, No explicit Update statement requires : update invoice; is not required.
                 Invoice__c oldInvoice = Trigger.oldMap.get(invoice.Id);
                 if(invoice.Status__c != oldInvoice.Status__c && invoice.Status__c == 'Processed' && invalidInvoiceIdSet.contains(invoice.Id)){
@@ -61,9 +63,9 @@ trigger InvoiceTrigger on Invoice__c (before insert, before update, before delet
             System.debug('new:'+Trigger.new);
             System.debug('newMap:'+Trigger.newMap);
         }else if(Trigger.isUpdate){//The current Invoice Record is available to User, so Invoice Line Item could be created on current Invoice by the End User.
-            if(InvoiceTriggerClass.runOnceAfter() == false){
-                 return;
-            }
+            // if(InvoiceTriggerClass.runOnceAfter() == false){
+            //      return;
+            // }
             System.debug('Trigger --> After Update');
             System.debug('old:'+Trigger.old);
             System.debug('oldMap:'+Trigger.oldMap);

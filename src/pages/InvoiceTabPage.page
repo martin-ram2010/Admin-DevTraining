@@ -1,0 +1,47 @@
+<apex:page controller="InvoiceClassicController">
+
+    <!-- Display all Invoice records -->
+    <apex:form >
+        <apex:pageBlock title="All Invoices">
+            <!-- Display Invoice Details -->
+            <apex:pageBlockTable value="{!invoiceList}" var="inv">
+                <apex:column value="{!inv.Name}"/>
+                <apex:column value="{!inv.Billing_Date__c}"/>
+                <apex:column value="{!inv.Price__c}"/>
+                <apex:column headerValue="Action">
+                    <apex:commandButton value="Show Details" action="{!getInvoiceRelatedDetails}" rerender="invoiceDetails">
+                        <apex:param name="RecordId" assignto="{!selecteInvoiceId}" value="{!inv.Id}"/>
+                    </apex:commandButton>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+
+    <!-- Display selected Invoice Details -->
+    <apex:outputPanel id="invoiceDetails"  >
+        <apex:pageBlock title="Invoice Details with Invoice Line Items">
+            <!-- Display Invoice Details -->
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!invoiceRec.Name}"/>
+                <apex:outputField value="{!invoiceRec.Billing_Date__c}"/>
+                <apex:outputField value="{!invoiceRec.Status__c}"/>
+                <apex:outputField value="{!invoiceRec.Price__c}"/>
+                <apex:outputField value="{!invoiceRec.Max_INVL_Price__c}"/>
+                <apex:outputField value="{!invoiceRec.Min_INVL_Price__c}"/>
+                <apex:outputField value="{!invoiceRec.Account__c}"/>
+                <apex:outputField value="{!invoiceRec.Owner_Profile_Name__c}"/>
+                <apex:outputField value="{!invoiceRec.Country__c}"/>
+                <apex:outputField value="{!invoiceRec.State__c}"/>
+                <apex:outputField value="{!invoiceRec.City__c}"/>
+                <apex:outputField value="{!invoiceRec.Street__c}"/>
+            </apex:pageBlockSection>
+
+            <!-- Display Invoice Details -->
+            <apex:pageBlockTable value="{!invlList}" var="invl">
+                <apex:column value="{!invl.Name}"/>
+                <apex:column value="{!invl.Price__c}"/>
+            </apex:pageBlockTable>
+    
+        </apex:pageBlock>
+    </apex:outputPanel>
+</apex:page>

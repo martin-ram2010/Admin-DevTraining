@@ -1,0 +1,9 @@
+<apex:page standardController="Invoice__c">
+    <!-- Heading -->
+    <apex:pageBlock title="Invoice Details">
+        <!-- Invoice Details -->
+        <apex:pageBlockSection >
+            <apex:outputField value="{!Invoice__c.Name}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
