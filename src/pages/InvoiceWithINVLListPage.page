@@ -1,7 +1,7 @@
 <apex:page standardController="Invoice__c" extensions="InvoiceExtension">
     <apex:pageBlock title="Invoice Details with Invoice Line Items">
         <!-- Display Invoice Details -->
-        <apex:pageBlockSection columns="1">
+        <apex:pageBlockSection columns="2">
             <apex:outputField value="{!Invoice__c.Name}"/>
             <apex:outputField value="{!Invoice__c.Price__c}"/>
         </apex:pageBlockSection>

@@ -4,6 +4,7 @@
         <!-- Invoice Details -->
         <apex:pageBlockSection >
             <apex:outputField value="{!Invoice__c.Name}"/>
+            <apex:outputField value="{!Invoice__c.Price__c}"/>
         </apex:pageBlockSection>
     </apex:pageBlock>
 </apex:page>

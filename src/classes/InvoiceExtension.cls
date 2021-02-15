@@ -1,6 +1,15 @@
 //Standard Controller Extension - to display the Invoice Line Items along with Invoice Details
 public with sharing class InvoiceExtension {
+    //Model to store all related Invoice Line Item
     public List<Invoice_Line_Item__c> invlList {get;set;}
+    /*
+    public List<Invoice_Line_Item__c> getInvoiceList(){
+        return this.invlList;
+    }
+    public void setInvoiceList(List<Invoice_Line_Item__c> value){
+        this.invlList= value;
+    }
+    */
 
     public InvoiceExtension(Apexpages.StandardController sc) {
         //Get the current Invoice record
