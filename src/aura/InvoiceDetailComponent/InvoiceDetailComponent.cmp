@@ -1,0 +1,30 @@
+<!-- Component with  force:recordData to display the current record field-->
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome">
+    <!-- force:hasRecordId will get you recordId attribute which hold the current page record Id by default by the lightning framework -->
+
+    <!-- Attributes -->
+	<aura:attribute name="invoiceRecord" type="Object" description="To store the Invoice reecord fetched by force:recordData"/>
+    <aura:attribute name="recordLoadError" type="String"  description="To store the error message while fetching Invoice record using force:recordData"/>
+
+    <!-- To load the record without using custom controller use recordData  -->
+    <force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Name,Price__c,Status__c"
+    targetFields="{!v.invoiceRecord}"
+    targetError="{!v.recordLoadError}"
+    />
+    
+    <!-- Display the fetched record details using recordData below -->
+    <div> 
+        <lightning:card title="{!v.invoiceRecord.Name}" >
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--medium">
+                    <lightning:formattedNumber title="Price" value="{!v.invoiceRecord.Price__c}" style="currency" currencyCode="USD"/>
+                </p>
+                <p class="slds-truncate">
+                    <lightning:formattedText title="Status" value="{!v.invoiceRecord.Status__c}" />
+                </p>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

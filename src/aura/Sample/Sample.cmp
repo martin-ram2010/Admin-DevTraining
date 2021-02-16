@@ -1,0 +1,7 @@
+<!-- Sample.cmp -->
+<aura:component>
+	<aura:attribute name="text" type="String" default="String data"/>
+	
+    <lightning:button variant="brand" label="Brand" title="Brand action" onclick="{! c.handleClick }" />
+	<br/> {!v.text}
+</aura:component>
