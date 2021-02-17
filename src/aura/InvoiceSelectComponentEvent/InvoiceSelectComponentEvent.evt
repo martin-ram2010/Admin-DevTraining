@@ -1,0 +1,6 @@
+<!-- InvoiceSelectComponentEvent to establish the communication between AllInvoiceComponent and InvoiceSelectionComponent-->
+<!-- InvoiceSelectionComponent will fire the event -->
+<!-- AllInvoiceComponent will handle the event -->
+<aura:event type="COMPONENT" description="Invoice Select Component Event">
+    <aura:attribute name="selectedInvoiceId" type="String" description="to hold the Invoice Id and make available to handler components"/>
+</aura:event>

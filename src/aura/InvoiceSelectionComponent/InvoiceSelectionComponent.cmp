@@ -1,0 +1,15 @@
+<aura:component controller="AllInvoiceController">
+    <!-- Attributes -->
+    <aura:attribute name="options" type="List" default="[{'label': '--None--', 'value': ''}]"/>
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <!-- The c:InvoiceSelectionComponent component uses aura:registerEvent to declare that it may fire the component event. -->
+    <aura:registerEvent name="invoiceSelectionEvent" type="c:InvoiceSelectComponentEvent"/>
+    
+    <!-- Body -->
+    <lightning:card>
+        <!-- Display options to select the invoice record -->
+        <lightning:combobox name="invoices" label="Select Invoice" value="" placeholder="Select Invoice" options="{! v.options }" onchange="{! c.handleChange }"/>
+    </lightning:card>
+</aura:component>

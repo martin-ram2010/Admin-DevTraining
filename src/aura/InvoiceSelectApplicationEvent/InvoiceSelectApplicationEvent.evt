@@ -1,0 +1,6 @@
+<!-- InvoiceSelectApplicationEvent to establish the communication between AllInvoiceComponent and CompleteInvoiceDetailComponent, using this event any component can communicate with each other in same page-->
+<!-- AllInvoiceComponent will fire the event -->
+<!-- CompleteInvoiceDetailComponent will handle the event -->
+<aura:event type="APPLICATION" description="to hold the Invoice Id and make available to handler components">
+    <aura:attribute name="selectedInvoiceId" type="String" description="to hold the Invoice Id and make available to handler components"/>
+</aura:event>

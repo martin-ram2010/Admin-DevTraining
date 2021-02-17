@@ -1,0 +1,24 @@
+<aura:component controller="AllInvoiceController">
+    <!-- Attributes -->
+    <aura:attribute name="invoiceRecord" type="Invoice__c" description="To hold the Invoice record after handing the application Event and fetching Invoice Id"/>
+
+    <!-- Handlers -->
+     <!-- When the event is fired, the handleApplicationEvent action in the client-side controller of the handler component is invoked. -->
+     <aura:handler event="c:InvoiceSelectApplicationEvent" action="{!c.handleApplicationEvent}"/>
+
+    <!-- Body -->
+    <!-- Display the fetched record details using recordData below -->
+    <div> 
+        <lightning:card title="{!v.invoiceRecord.Name}" >
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--medium">
+                    <lightning:formattedNumber title="Price" value="{!v.invoiceRecord.Price__c}" style="currency" currencyCode="USD"/>
+                </p>
+                <p class="slds-truncate">
+                    <lightning:formattedText title="Status" value="{!v.invoiceRecord.Status__c}" />
+                </p>
+            </div>
+        </lightning:card>
+    </div>
+
+</aura:component>

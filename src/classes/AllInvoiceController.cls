@@ -6,17 +6,17 @@ public with sharing class AllInvoiceController {
         invoiceList = [SELECT Id, Name from Invoice__c];
         return invoiceList;
     }
-    //Get Invoice and INVL list records for the passed invoice record Id
+
+    //Get INVL list records for the passed invoice record Id
     @AuraEnabled
-    public static InvoiceResponse getInvoiceDetails(Id invoiceId){
-        InvoiceResponse response = new InvoiceResponse();
-        response.invoiceRecord =[SELECT Id, Name, Price__c, Status__c from Invoice__c WHERE Id =:invoiceId];
-        response.invlList = [SELECT Id, Name, Price__c from Invoice_Line_Item__c WHERE Invoice_Master__c=:invoiceId];
-        return response;
+    public static List<Invoice_Line_Item__c> getInvoiceLineItems(Id invoiceId){
+        return [SELECT Id, Name, Price__c, Status__c from Invoice_Line_Item__c WHERE Invoice_Master__c=:invoiceId];
     }
-    //Inner class - Used as sending response back to browser
-    public class InvoiceResponse{
-        public Invoice__c invoiceRecord;
-        public List<Invoice_Line_Item__c> invlList;
+    
+    //Get Invoice Record records for the passed invoice record Id
+    @AuraEnabled
+    public static Invoice__c getInvoiceRecord(Id invoiceId){
+        Invoice__c invoiceRecord = [SELECT Id, Name, Status__c, Price__c FROM Invoice__c WHERE Id =: invoiceId];
+        return invoiceRecord;
     }
 }

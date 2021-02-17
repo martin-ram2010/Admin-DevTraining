@@ -1,0 +1,23 @@
+<aura:component implements="force:appHostable" controller="AllInvoiceController">
+    <!-- Attributes -->
+    <aura:attribute name="selectedInvoiceId" type="String" description="To hold the selected invoice Id from InvoiceSelectionComponent"/>
+    
+    <!-- Handlers -->
+    <!-- Note that name="invoiceSelectionEvent" in aura:registerEvent
+     in InvoiceSelectionComponent.cmp -->
+     <!-- When the event is fired, the handleComponentEvent action in the client-side controller of the handler component is invoked. -->
+     <aura:handler name="invoiceSelectionEvent" event="c:InvoiceSelectComponentEvent" action="{!c.handleComponentEvent}"/>
+
+    <!-- Register Event InvoiceSelectApplicationEvent-->
+    <aura:registerEvent name="invoiceAppEvent" type="c:InvoiceSelectApplicationEvent"/>
+    
+    <!-- Body -->
+    <!-- Display options to select the invoice record -->
+    <c:InvoiceSelectionComponent/>
+
+    <!-- Check if invoiceLineItems attribute is empty or not , if not then load InvoiceLineItemListComponent to display the list of invoice line item records -->
+    <aura:if isTrue="{!not(empty(v.selectedInvoiceId))}">
+        <c:InvoiceLineItemListComponent invoiceId="{!v.selectedInvoiceId}"/>
+    </aura:if>
+
+</aura:component>

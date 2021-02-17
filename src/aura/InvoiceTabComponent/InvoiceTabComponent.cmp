@@ -1,0 +1,5 @@
+<!-- Display as a tab combining both showing selection of Invoice and showning Invoice details and Invoice line items -->
+<aura:component implements="force:appHostable">
+    <c:CompleteInvoiceDetailComponent/>
+    <c:AllInvoiceComponent/>
+</aura:component>

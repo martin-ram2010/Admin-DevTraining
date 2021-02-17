@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable" controller="AllInvoiceController">
+    <!-- Attributes -->
+    <aura:attribute name="invoiceId" type="String" description="To hold the invoice Id"/>
+    <aura:attribute name="invoiceLineItems" type="List"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <!-- Body -->
+    <lightning:datatable
+            keyField="Id"
+            data="{! v.invoiceLineItems }"
+            columns="{! v.columns }"
+            hideCheckboxColumn="true"/>
+</aura:component>
